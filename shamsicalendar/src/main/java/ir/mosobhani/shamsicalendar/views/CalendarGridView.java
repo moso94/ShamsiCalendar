@@ -1,5 +1,5 @@
 // Copyright 2012 Square, Inc.
-package ir.mosobhani.calendar;
+package ir.mosobhani.shamsicalendar.views;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -9,6 +9,8 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
+import ir.mosobhani.shamsicalendar.R;
 
 import static android.view.View.MeasureSpec.AT_MOST;
 import static android.view.View.MeasureSpec.EXACTLY;
@@ -25,7 +27,7 @@ public class CalendarGridView extends ViewGroup {
 
     public CalendarGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        dividerPaint.setColor(getResources().getColor(R.color.transparent));
+        dividerPaint.setColor(getResources().getColor(R.color.divider));
     }
 
     public void setDividerColor(int color) {

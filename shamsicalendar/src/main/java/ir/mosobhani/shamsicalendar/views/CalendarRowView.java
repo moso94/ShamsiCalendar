@@ -1,5 +1,4 @@
-// Copyright 2012 Square, Inc.
-package ir.mosobhani.calendar;
+package ir.mosobhani.shamsicalendar.views;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -9,16 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import ir.mosobhani.shamsicalendar.model.MonthCellDescriptor;
+
 import static android.view.View.MeasureSpec.AT_MOST;
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
 
-/**
- * TableRow that draws a divider between each cell. To be used with {@link CalendarGridView}.
- */
+
 public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     private boolean isHeaderRow;
-    private MonthView.Listener listener;
+    private CalendarView.Listener listener;
 
     public CalendarRowView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -81,7 +80,7 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
         }
     }
 
-    public void setListener(MonthView.Listener listener) {
+    public void setListener(CalendarView.Listener listener) {
         this.listener = listener;
     }
 

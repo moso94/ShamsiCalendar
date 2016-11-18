@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ir.mosobhani.calendar.CalendarRowView xmlns:android="http://schemas.android.com/apk/res/android"
+<ir.mosobhani.shamsicalendar.views.CalendarRowView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
 
-    <ir.mosobhani.calendar.CalendarCellView
+    <ir.mosobhani.shamsicalendar.views.CalendarCellView
         style="@style/CalendarCell.CalendarDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="۱" />
-</ir.mosobhani.calendar.CalendarRowView>
+</ir.mosobhani.shamsicalendar.views.CalendarRowView>

@@ -1,4 +1,4 @@
-package ir.mosobhani.calendar;
+package ir.mosobhani.shamsicalendar.calendar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -6,102 +6,13 @@ import org.json.JSONObject;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-/**
- * <strong> Persian(Shamsi) calendar </strong>
- * <p>
- * </p>
- * <p>
- * The calendar consists of 12 months, the first six of which are 31 days, the
- * next five 30 days, and the final month 29 days in a normal year and 30 days
- * in a leap year.
- * </p>
- * <p>
- * As one of the few calendars designed in the era of accurate positional
- * astronomy, the Persian calendar uses a very complex leap year structure which
- * makes it the most accurate solar calendar in use today. Years are grouped
- * into cycles which begin with four normal years after which every fourth
- * subsequent year in the cycle is a leap year. Cycles are grouped into grand
- * cycles of either 128 years (composed of cycles of 29, 33, 33, and 33 years)
- * or 132 years, containing cycles of of 29, 33, 33, and 37 years. A great grand
- * cycle is composed of 21 consecutive 128 year grand cycles and a final 132
- * grand cycle, for a total of 2820 years. The pattern of normal and leap years
- * which began in 1925 will not repeat until the year 4745!
- * </p>
- * </p> Each 2820 year great grand cycle contains 2137 normal years of 365 days
- * and 683 leap years of 366 days, with the average year length over the great
- * grand cycle of 365.24219852. So close is this to the actual solar tropical
- * year of 365.24219878 days that the Persian calendar accumulates an error of
- * one day only every 3.8 million years. As a purely solar calendar, months are
- * not synchronized with the phases of the Moon. </p>
- * <p>
- * </p>
- * <p/>
- * <p>
- * <strong>PersianCalendar</strong> by extending Default GregorianCalendar
- * provides capabilities such as:
- * </p>
- * <p>
- * </p>
- * <p/>
- * <li>you can set the date in Persian by setPersianDate(persianYear,
- * persianMonth, persianDay) and get the Gregorian date or vice versa</li>
- * <p>
- * </p>
- * <li>determine is the current date is Leap year in persian calendar or not by
- * IsPersianLeapYear()</li>
- * <p>
- * </p>
- * <li>getPersian short and long Date String getPersianShortDate() and
- * getPersianLongDate you also can set dateDelimiter to assign dateDelimiter of returned
- * dateString</li>
- * <p>
- * </p>
- * <li>Parse string based on assigned dateDelimiter</li>
- * <p>
- * </p>
- * <p>
- * </p>
- * <p>
- * </p>
- * <p>
- * <strong> Example </strong>
- * </p>
- * <p>
- * </p>
- * <p/>
- * <pre>
- * {@code
- *       PersianCalendar persianCal = new PersianCalendar();
- *       System.out.println(persianCal.getPersianShortDate());
- *
- *       persianCal.set(1982, Calendar.MAY, 22);
- *       System.out.println(persianCal.getPersianShortDate());
- *
- *       persianCal.setDateDelimiter(" , ");
- *       persianCal.parse("1361 , 03 , 01");
- *       System.out.println(persianCal.getPersianShortDate());
- *
- *       persianCal.setPersianDate(1361, 3, 1);
- *       System.out.println(persianCal.getPersianLongDate());
- *       System.out.println(persianCal.getTime());
- *
- *       persianCal.addPersianDate(Calendar.MONTH, 33);
- *       persianCal.addPersianDate(Calendar.YEAR, 5);
- *       persianCal.addPersianDate(Calendar.DATE, 50);
- *
- * }
- *
- * <pre>
- *
- * @author Morteza  contact: <a href="mailto:Mortezaadi@gmail.com">Mortezaadi@gmail.com</a>
- * @version 1.1
- */
 public class PersianCalendar extends GregorianCalendar {
 
-    public static final long MILLIS_JULIAN_EPOCH = -210866803200000L;
-    public static final long MILLIS_OF_A_DAY = 86400000L;
-    public static final long PERSIAN_EPOCH = 1948321;
+    private static final long MILLIS_JULIAN_EPOCH = -210866803200000L;
+    private static final long MILLIS_OF_A_DAY = 86400000L;
+    private static final long PERSIAN_EPOCH = 1948321;
     private static final long serialVersionUID = 5541422440580682494L;
+    private static String[] persianNumbers = new String[]{"۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"};
     private static String[] MONTH_NAME = new String[]{"فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"};
     private int persianYear;
     private int persianMonth;
@@ -109,7 +20,13 @@ public class PersianCalendar extends GregorianCalendar {
     private String dateDelimiter = "-";
     private String timeDelimiter = ":";
 
+    public PersianCalendar(PersianCalendar calendar) {
+        setTimeZone(TimeZone.getTimeZone("GMT"));
+        setPersianDate(calendar.getPersianYear(), calendar.getPersianMonth(), calendar.getPersianDay());
+    }
+
     public PersianCalendar(long millis) {
+        setTimeZone(TimeZone.getTimeZone("GMT"));
         setTimeInMillis(millis);
     }
 
@@ -121,12 +38,9 @@ public class PersianCalendar extends GregorianCalendar {
         set(MILLISECOND, 0);
     }
 
-    public PersianCalendar(String json) throws JSONException {
-        JSONObject jsonObject = new JSONObject(json);
-        int y = jsonObject.getInt("year");
-        int m = jsonObject.getInt("month");
-        int d = jsonObject.getInt("day");
-        setPersianDate(y, m, d);
+    public PersianCalendar(int persianYear, int persianMonth, int persianDay) {
+        setTimeZone(TimeZone.getTimeZone("GMT"));
+        setPersianDate(persianYear, persianMonth, persianDay);
     }
 
     public static long persianToJulian(long year, int month, int day) {
@@ -172,41 +86,40 @@ public class PersianCalendar extends GregorianCalendar {
         int month = (int) (PersianRowDate & 0xff00) >> 8;
         int day = (int) (PersianRowDate & 0xff);
         this.persianYear = (int) (year > 0 ? year : year - 1);
-        this.persianMonth = month;
+        this.persianMonth = month + 1;
         this.persianDay = day;
     }
 
     public void SetDayOfMonth(int day) {
-        setPersianDate(persianYear, persianMonth + 1, day);
+        setPersianDate(persianYear, persianMonth, day);
     }
 
     public boolean isPersianLeapYear() {
-        // calculatePersianDate();
         return isPersianLeapYear(this.persianYear);
     }
 
     public void setPersianDate(int persianYear, int persianMonth, int persianDay) {
-        //persianMonth += 1; // TODO
         setTimeInMillis(convertToMilis(persianToJulian(persianYear > 0 ? persianYear : persianYear + 1, persianMonth - 1, persianDay)));
     }
 
     public int getPersianYear() {
-        // calculatePersianDate();
         return this.persianYear;
     }
 
     public int getPersianMonth() {
-        // calculatePersianDate();
-        return this.persianMonth + 1;
+        return this.persianMonth;
     }
 
     public String getPersianMonthName() {
-        return MONTH_NAME[persianMonth] + " ماه " + persianYear;
+        return MONTH_NAME[persianMonth - 1] + " ماه " + toPersianNumber(String.valueOf(persianYear));
     }
 
     public int getPersianDay() {
-        // calculatePersianDate();
         return this.persianDay;
+    }
+
+    public String getPersianDayStr() {
+        return toPersianNumber(String.valueOf(this.persianDay));
     }
 
     public String getPersianWeekDayName() {
@@ -288,12 +201,24 @@ public class PersianCalendar extends GregorianCalendar {
         this.dateDelimiter = dateDelimiter;
     }
 
-    public String toJSON() throws JSONException {
-        JSONObject json = new JSONObject();
-        json.put("year", persianYear);
-        json.put("month", persianMonth + 1);
-        json.put("day", persianDay);
-        return json.toString();
+    public static String toPersianNumber(String text) {
+        if (text.isEmpty())
+            return "";
+        String out = "";
+        int length = text.length();
+        for (int i = 0; i < length; i++) {
+            char c = text.charAt(i);
+            if ('0' <= c && c <= '9') {
+                int number = Integer.parseInt(String.valueOf(c));
+                out += persianNumbers[number];
+            } else if (c == '٫') {
+                out += '،';
+            } else {
+                out += c;
+            }
+
+        }
+        return out;
     }
 
     @Override
@@ -313,7 +238,7 @@ public class PersianCalendar extends GregorianCalendar {
         if (obj != "") {
             PersianCalendar cal = (PersianCalendar) obj;
             return cal.getPersianYear() == persianYear
-                    && cal.getPersianMonth() == persianMonth + 1
+                    && cal.getPersianMonth() == persianMonth
                     && cal.getPersianDay() == persianDay;
         }
         return false;

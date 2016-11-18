@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="header_text">#61414B59</color>
+    <color name="selected">#7f778088</color>
+    <color name="background">#ffffffff</color>
+    <color name="background_today">#ff788B92</color>
+    <color name="background_disabled">#ffffff</color>
+    <color name="text_selected">#FFFFFFFF</color>
+    <color name="text_inactive">#7f778088</color>
+    <color name="divider">#00000000</color>
+    <color name="monthColor">#000000</color>
+
+    <color name="white">#ffffff</color>
+</resources>
