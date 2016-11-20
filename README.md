@@ -5,7 +5,7 @@ A library to use shamsi calendar in your app as simple as possible
 
 :shamsicalendar  is the library source code
 
-Gradle Dependency (jCenter)
+# Gradle Dependency (jCenter)
 
 Just add the dependency to your build.gradle file
 ```gradle 
@@ -46,11 +46,11 @@ calendarView.setOnCalenderClick(new CalendarView.OnCalenderClick() {
         });
 ```
 
-##Contribution
+#Contribution
 
 ### Questions
 
-If you have any questions regarding MultiImagePicker,create an Issue
+If you have any questions regarding ShamsiCalendar,create an Issue
 
 ### Feature request
 
@@ -60,10 +60,10 @@ I'll try to answer as soon as I find the time.
 
 ### Pull requests welcome
 
-Feel free to contribute to MultiImagePicker.
+Feel free to contribute to ShamsiCalendar.
 
 Either you found a bug or have created a new and awesome feature, just create a pull request.
 
 
 ### Contact me
-Fill free to contact me in [telegram](https://telegram.me/moso94).
+Feel free to contact me in [telegram](https://telegram.me/moso94).
