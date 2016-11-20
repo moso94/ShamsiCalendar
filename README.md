@@ -45,3 +45,25 @@ calendarView.setOnCalenderClick(new CalendarView.OnCalenderClick() {
             }
         });
 ```
+
+##Contribution
+
+### Questions
+
+If you have any questions regarding MultiImagePicker,create an Issue
+
+### Feature request
+
+To create a new Feature request, open an issue 
+
+I'll try to answer as soon as I find the time.
+
+### Pull requests welcome
+
+Feel free to contribute to MultiImagePicker.
+
+Either you found a bug or have created a new and awesome feature, just create a pull request.
+
+
+### Contact me
+Fill free to contact me in [telegram](https://telegram.me/moso94).
