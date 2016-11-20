@@ -1,8 +1,5 @@
 package ir.mosobhani.shamsicalendar.calendar;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import ir.mosobhani.shamsicalendar.model.MonthCellDescriptor;
+import ir.mosobhani.shamsicalendar.calendar.PersianCalendar;
 
 import static android.view.View.MeasureSpec.AT_MOST;
 import static android.view.View.MeasureSpec.EXACTLY;
@@ -17,7 +17,7 @@ import static android.view.View.MeasureSpec.makeMeasureSpec;
 
 public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     private boolean isHeaderRow;
-    private CalendarView.Listener listener;
+    private CalendarView.OnCalenderClick onCalenderClick = null;
 
     public CalendarRowView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -31,19 +31,16 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        long start = System.currentTimeMillis();
         final int totalWidth = MeasureSpec.getSize(widthMeasureSpec);
         int rowHeight = 0;
         for (int c = 0, numChildren = getChildCount(); c < numChildren; c++) {
             final View child = getChildAt(c);
-            // Calculate width cells, making sure to cover totalWidth.
             int l = ((c + 0) * totalWidth) / 7;
             int r = ((c + 1) * totalWidth) / 7;
             int cellSize = r - l;
             int cellWidthSpec = makeMeasureSpec(cellSize, EXACTLY);
             int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, AT_MOST) : cellWidthSpec;
             child.measure(cellWidthSpec, cellHeightSpec);
-            // The row height is the height of the tallest cell.
             if (child.getMeasuredHeight() > rowHeight) {
                 rowHeight = child.getMeasuredHeight();
             }
@@ -74,14 +71,13 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Header rows don't have a click listener
-        if (listener != null) {
-            listener.handleClick((MonthCellDescriptor) v.getTag());
+        if (onCalenderClick != null) {
+            onCalenderClick.handleClick((PersianCalendar) v.getTag());
         }
     }
 
-    public void setListener(CalendarView.Listener listener) {
-        this.listener = listener;
+    public void setOnCalenderClick(CalendarView.OnCalenderClick onCalenderClick) {
+        this.onCalenderClick = onCalenderClick;
     }
 
     public void setCellBackground(int resId) {

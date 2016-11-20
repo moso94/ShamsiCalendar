@@ -1,4 +1,3 @@
-// Copyright 2012 Square, Inc.
 package ir.mosobhani.shamsicalendar.views;
 
 import android.content.Context;
@@ -139,7 +138,6 @@ public class CalendarGridView extends ViewGroup {
 
     public void setNumRows(int numRows) {
         if (oldNumRows != numRows) {
-            // If the number of rows changes, make sure we do a re-measure next time around.
             oldWidthMeasureSize = 0;
         }
         oldNumRows = numRows;

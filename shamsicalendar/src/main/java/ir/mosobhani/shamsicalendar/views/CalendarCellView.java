@@ -1,5 +1,3 @@
-// Copyright 2013 Square, Inc.
-
 package ir.mosobhani.shamsicalendar.views;
 
 import android.content.Context;
@@ -7,7 +5,6 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import ir.mosobhani.shamsicalendar.R;
-import ir.mosobhani.shamsicalendar.model.MonthCellDescriptor;
 
 
 public class CalendarCellView extends TextView {
@@ -27,8 +24,6 @@ public class CalendarCellView extends TextView {
     private boolean isToday = false;
     public CalendarCellView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        //SetFont();
-
     }
 
 
@@ -53,7 +48,6 @@ public class CalendarCellView extends TextView {
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
         final int[] drawableState = super.onCreateDrawableState(extraSpace + 5);
-        //SetFont();
 
         mergeDrawableStates(drawableState, STATE_SELECTABLE);
 
