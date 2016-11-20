@@ -39,9 +39,9 @@ It's easy
 ```java
 CalendarView calendarView = (CalendarView) findViewById(R.id.calendar);
 calendarView.setOnCalenderClick(new CalendarView.OnCalenderClick() {
-	@Override
-	public void handleClick(PersianCalendar clickedDay) {
+            @Override
+            public void handleClick(PersianCalendar clickedDay) {
 
-	}
-	});
+            }
+        });
 ```
