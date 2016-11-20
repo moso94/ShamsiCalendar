@@ -13,8 +13,6 @@ import ir.mosobhani.shamsicalendar.calendar.PersianCalendar;
 import ir.mosobhani.shamsicalendar.views.CalendarView;
 
 public class MainActivity extends AppCompatActivity {
-    ir.mosobhani.shamsicalendar.views.CalendarView calendarView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
-        calendarView = (ir.mosobhani.shamsicalendar.views.CalendarView) findViewById(R.id.calendar);
+        CalendarView calendarView = (CalendarView) findViewById(R.id.calendar);
         calendarView.setOnCalenderClick(new CalendarView.OnCalenderClick() {
             @Override
             public void handleClick(PersianCalendar clickedDay) {
