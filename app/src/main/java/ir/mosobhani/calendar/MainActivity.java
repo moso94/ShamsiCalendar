@@ -9,9 +9,11 @@ import android.widget.Button;
 
 import java.util.Locale;
 
+import ir.mosobhani.shamsicalendar.calendar.PersianCalendar;
+import ir.mosobhani.shamsicalendar.views.CalendarView;
+
 public class MainActivity extends AppCompatActivity {
-    public static final int PLANNER_DATE = 4;
-    Button button;
+    ir.mosobhani.shamsicalendar.views.CalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,38 +28,14 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
+        calendarView = (ir.mosobhani.shamsicalendar.views.CalendarView) findViewById(R.id.calendar);
+        calendarView.setOnCalenderClick(new CalendarView.OnCalenderClick() {
+            @Override
+            public void handleClick(PersianCalendar clickedDay) {
 
-
-//        button = (Button) findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showCalendarDialog();
-//            }
-//        });
+            }
+        });
     }
 
 
-    void showCalendarDialog() {
-
-//        Planner_Calendar_Dialog dataDialog = Planner_Calendar_Dialog.newInstance("Some Title");
-//        dataDialog.setTargetFragment(this, PLANNER_DATE);
-//        PersianCalendar start = _dataBasePlan.getPlanner_date_start();
-//        PersianCalendar end = _dataBasePlan.getPlanner_date_end();
-        Bundle args = null;
-//        if (start != null && end != null) {
-//            args = new Bundle();
-//
-//            if (!start.equals("") && !end.equals("")) {
-//                try {
-//                    args.putString("start", start.toJSON());
-//                    args.putString("end", end.toJSON());
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//        dataDialog.setArguments(args);
-//        dataDialog.show(this.getSupportFragmentManager(), "fragment_edit_name");
-    }
 }
